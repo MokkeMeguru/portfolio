@@ -19,7 +19,7 @@
  (fn [{:keys [db]} _]
    {:db (assoc db :loaded true)
     :http-xhrio {:method :get
-                 :uri "/contents/test.edn"
+                 :uri "./contents/test.edn"
                  :timeout 2000
                  :response-format (ajaxedn/edn-response-format)
                  :on-success [::process-response]
