@@ -12,6 +12,5 @@
    [:#nav_panel {:align-items "stretch"
                  :display "flex"
                  :margin-left "1rem"}]
-   [:#nav_box {:padding 0}]]
-)
+   [:#nav_box {:padding 0}]])
 
