@@ -7,3 +7,4 @@ out
 /node_modules/
 /.dir-locals.el
 /.nrepl-port
+/resources/public/js/compiled/cljs-runtime/

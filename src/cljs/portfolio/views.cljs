@@ -1,9 +1,12 @@
 (ns portfolio.views
   (:require
+   ;; [ajax.core :refer [GET]]
    [re-frame.core :as re-frame]
    [portfolio.subs :as subs]
    [bulma-cljs.core :as b]
-   ))
+   [cljs.tools.reader.edn :as edn]
+   [portfolio.events :as events]
+   [shadow.resource :as rc]))
 
 (defn toggle-class
   ([id]
@@ -48,26 +51,23 @@
      [:span {:aria-hidden "true"}]]]
    [:div#main-navbar.navbar-menu
     [b/navbar-start
-     [:a.nitem.navbar-item "Introduction"]
-     [:div.nitem.navbar-item.has-dropdown.is-hoverable
-      [:a.navbar-link"VF project"]
-      [:div.navbar-dropdown
-       [:a.navbar-item "About"]]]
-     [:div.nitem.navbar-item.has-dropdown.is-hoverable
-      [:a.navbar-link"NLP & ML"]
-      [:div.navbar-dropdown
-       [:a.navbar-item "About"]]]
-     [:div.nitem.navbar-item.has-dropdown.is-hoverable
-      [:a.navbar-link "Web Dev"]
-      [:div.navbar-dropdown
-       [:a.navbar-item "About"]]]
-     [:a.nitem.navbar-item "Illust"]]
+     (map
+      (fn [content] ^{:key content}
+        [:a.nitem.navbar-item content])
+          ["Introduction" "VF project" "About" "NLP & ML" "Web Dev" "Illust"])]
     [nav-panel-end]
     ]])
 
 (defn main-panel []
-  (let [name (re-frame/subscribe [::subs/name])]
+  (let [name (re-frame/subscribe [::subs/name])
+        data (re-frame/subscribe [::subs/data])]
     [:div
      [nav-panel]
      [:div
-      [:div "Hello from " @name]]]))
+      
+      [:div
+       "Hello from " @name 
+       ]
+      [:button.button.is-primary {:on-click #(re-frame/dispatch-sync [::events/load-test-content])} "get sample message"]
+      [:div "sample data" @data]
+      ]]))
