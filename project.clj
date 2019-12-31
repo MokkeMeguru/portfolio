@@ -4,20 +4,31 @@
                   :exclusions [com.google.javascript/closure-compiler-unshaded
                                org.clojure/google-closure-library
                                org.clojure/google-closure-library-third-party]]
-                 [bulma-cljs "0.1.4"]
                  [thheller/shadow-cljs "2.8.83"]
+                 [bulma-cljs "0.1.4"]
                  [reagent "0.8.1"]
-                 [re-frame "0.10.9"]]
+                 [re-frame "0.10.9"]
+                 [garden "1.3.9"]
+                 [ns-tracker "0.4.0"]]
 
-  :plugins [
+  :plugins [[lein-garden "0.3.0"]
             [lein-shell "0.5.0"]]
 
   :min-lein-version "2.5.3"
 
+  :jvm-opts ["-Xmx1G"]
+
   :source-paths ["src/clj" "src/cljs"]
 
-  :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
+  :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"
+                                    "resources/public/css"]
 
+
+  :garden {:builds [{:id           "screen"
+                     :source-paths ["src/clj"]
+                     :stylesheet   portfolio.css/screen
+                     :compiler     {:output-to     "resources/public/css/screen.css"
+                                    :pretty-print? true}}]}
 
   :shell {:commands {"open" {:windows ["cmd" "/c" "start"]
                              :macosx  "open"
@@ -40,7 +51,9 @@
 
   :profiles
   {:dev
-   {:dependencies [[binaryage/devtools "0.9.11"]]}
+   {:dependencies [[binaryage/devtools "0.9.11"]
+                   [day8.re-frame/re-frame-10x "0.4.4"]
+                   [day8.re-frame/tracing "0.5.3"]]}
 
-   :prod { }
+   :prod { :dependencies [[day8.re-frame/tracing-stubs "0.5.3"]]}
    })

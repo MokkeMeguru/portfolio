@@ -5,3 +5,5 @@
 out
 /.shadow-cljs/
 /node_modules/
+/.dir-locals.el
+/.nrepl-port

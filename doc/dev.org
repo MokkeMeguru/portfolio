@@ -1,0 +1,37 @@
+* 開発環境
+  - OS: Manjaro Linux
+  - Editor: Spacemacs
+* 開発フロー
+  Clojure / ClojureScript 開発環境である Cider のホットローディングを用いた高速開発
+ 0. フレームワークのセットアップ
+    #+begin_example
+    lein new re-frame  portfolio +garden +10x +cider
+    #+end_example
+    
+1. Cider の立ち上げ 
+    #+begin_example
+    M-x cider-jack-in-cljs
+    #+end_example
+2. Repl の選択
+   shadow を選択 -> :app を選択
+3. Cider のビルドを待つ
+   ~cider-repl~ が立ち上がるのを待ち、REPL環境が立ち上がるためのコンパイル時間も待つ
+   次のようなログがコンパイルの完了を示している。
+   #+begin_example
+   [:app] Configuring build.
+   [:app] Compiling ...
+   [:app] Build completed. (521 files, 520 compiled, 0 warnings, 58.97s)
+   To quit, type: :cljs/quit
+   shadow.user> 
+   cljs.user> 
+   #+end_example
+   
+   この状態で、 ~https://localhost:8280~ へアクセスすると、"Hello from re-frame" という画面が見える。この状態で ~src/cljs~ 下のコードを書くことでホットローディングが行われる。
+** CSS の自動コンパイル
+   clojure のライブラリである garden を用いることで css をホットローディング出来ます。
+   次のコマンドを実行し、 ~src/clj/css.clj~ を編集することでCSSを適用させます。
+   #+begin_example
+   lein garden auto
+   #+end_example
+   
+   
