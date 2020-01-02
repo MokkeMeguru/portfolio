@@ -1,7 +1,6 @@
 (ns portfolio.views
   (:require
-   ;; [ajax.core :refer [GET]]
-   [re-frame.core :as re-frame]
+    [re-frame.core :as re-frame]
    [portfolio.subs :as subs]
    [bulma-cljs.core :as b]
    [cljs.tools.reader.edn :as edn]
@@ -16,6 +15,14 @@
      (if (.contains el-classList toggled-class)
        (.remove el-classList toggled-class)
        (.add el-classList toggled-class)))))
+
+(def title-to-file
+  {"Introduction" "introduction"
+   "VF project" "vf-project"
+   "About" "about"
+   "NLP & ML" "nlp-ml"
+   "Web Dev" "web-dev"
+   "Illust" "illust"})
 
 (defn twitter-link []
   [:a.bd-tw-button.button
@@ -53,21 +60,36 @@
     [b/navbar-start
      (map
       (fn [content] ^{:key content}
-        [:a.nitem.navbar-item content])
+        [:a.nitem.navbar-item
+         {:on-click #(re-frame/dispatch-sync [::events/load-test-content (get title-to-file content)])}
+         content])
           ["Introduction" "VF project" "About" "NLP & ML" "Web Dev" "Illust"])]
     [nav-panel-end]
     ]])
 
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])
-        data (re-frame/subscribe [::subs/data])]
+        data (re-frame/subscribe [::subs/data])
+        found? (re-frame/subscribe [::subs/found?])]
     [:div
      [nav-panel]
      [:div
-      
-      [:div
-       "Hello from " @name 
-       ]
-      [:button.button.is-primary {:on-click #(re-frame/dispatch-sync [::events/load-test-content])} "get sample message"]
-      [:div "sample data" @data]
+      (if @found?
+        [:div.container
+         (map
+          (fn [content]
+            (let [subtitle (-> content :subtitle)
+                  description (-> content :description)
+                  cont (-> content :content)]
+              ^{:key subtitle}
+              [:div.columns.**is-desktop**
+               [:div.column.is-1.**is-desktop**
+                {:style {:background-color "gray"
+                         :background-clip  "content-box"
+                         :margin-top "1rem"}}]
+               [:div.column.is-10.**is-desktop**>div.columns.**is-desktop**>div.column.is-8.is-offset-2>div.box
+                [:h2.title.is-spaced subtitle]
+                [:p description][:br]
+                cont]]))
+          (-> @data :contents))])
       ]]))

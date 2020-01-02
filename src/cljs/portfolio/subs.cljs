@@ -16,3 +16,8 @@
  ::data
  (fn [db]
    (:data db)))
+
+(re-frame/reg-sub
+ ::found?
+ (fn [db]
+   (:found? db)))

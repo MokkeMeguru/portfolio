@@ -1,0 +1,68 @@
+{:id "Introduction"
+ :title "Introduction"
+ :contents
+ [{:subtitle "自己紹介"
+   :description "趣味,性格を含めた簡潔な自己紹介"
+   :content
+   [:div
+    [:p "対話システムについて興味を持ち,深層学習を始めとした研究を大学/大学院で,より実務的なデータ収集・分析についてを外部/独自で行っている大学院生です。"]
+    [:p "普段は Qiita や Github で活動をしていますが,時間のあるときは息抜きとしてイラストを描いています。"]
+    [:p "また Web 開発などについては独学で行っており,このポートフォリオサイトもその成果物の一つです。"]
+    [:p "好みのプログラミング言語は Clojure / ClojureScript を始めとした Lisp ですが, Python や Java, Typescript を書くこともあります。深層学習のライブラリとしては Tensorflow 2.x 系と PyTorch を使っています。"]
+    [:p "人の作業や研究の手伝いを行うことが得意で好んでこれをします。"]]}
+  {:subtitle "プロフィール"
+   :description "ソーシャルメディア等へのアクセス"
+   :content
+   [:table.table.is-hoverable.is-fullwidth
+    [:thead
+     [:tr
+      [:th "メディア"]
+      [:th ""]]
+     ]
+    [:tbody
+     [:tr
+      [:th "氏名"]
+      [:td "____"]]
+     [:tr
+      [:th "Twitter"]
+      [:td [:a {:href "https://twitter.com/MeguruMokke"} "勿怪巡"]]]
+     [:tr
+      [:th "Github"]
+      [:td [:a {:href "https://github.com/MokkeMeguru"} "Mokke Meguru"]]]
+     [:tr
+      [:th "Qiita"]
+      [:td [:a {:href "https://qiita.com/MeguruMokke"} "MeguruMokke"]]]]]}
+  {:subtitle "略歴"
+   :description "大学入学以降の略歴"
+   :content
+   [:table.table.is-hoverable.is-fullwidth
+    [:thead
+     [:tr
+      [:th "年月"]
+      [:th ""]]]
+    [:tbody
+     [:tr
+      [:th "2016年4月"]
+      [:td "筑波大学情報学群情報科学類入学"]]
+     [:tr
+      [:th "2019年3月"]
+      [:td "筑波大学情報学群情報科学類卒業(早期卒業)"]]
+     [:tr
+      [:th "2019年4月"]
+      [:td "筑波大学大学院システム情報工学研究科コンピュータサイエンス専攻入学"]]]]}
+  {:subtitle "資格,賞罰"
+   :description "資格や受賞歴"
+   :content
+   [:table.table.is-hoverable.is-fullwidth
+    [:thead
+     [:tr
+      [:th "年月"]
+      [:th ""]]]
+    [:tbody
+     [:tr
+      [:th "2017年10月"]
+      [:td "応用情報技術者試験合格"]]
+     [:tr
+      [:th "2019年12月"]
+      [:td [:p "IDRユーザフォーラム 2019 企業賞受賞"] [:p "HTML構造を用いた文書の分析手法の提案：ニコニコ大百科の概要についての主語補完実験"]]]
+     ]]}]}

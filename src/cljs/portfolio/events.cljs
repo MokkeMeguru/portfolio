@@ -16,18 +16,26 @@
 
 (re-frame/reg-event-fx
  ::load-test-content
- (fn [{:keys [db]} _]
+ (fn [{:keys [db]} [_ id]]
    {:db (assoc db :loaded true)
     :http-xhrio {:method :get
-                 :uri "./contents/test.edn"
+                 :uri (str "./contents/" id ".edn")
                  :timeout 2000
                  :response-format (ajaxedn/edn-response-format)
-                 :on-success [::process-response]
-                 :on-failure [::process-response]}}))
+                 :on-success [::resource-get-success]
+                 :on-failure [::resource-get-failed]}}))
 
 (re-frame/reg-event-db
- ::process-response
+ ::resource-get-success
  (fn [db [_ response]]
    (-> db
        (assoc :loading? false)
+       (assoc :found? true)
        (assoc :data response))))
+
+(re-frame/reg-event-db
+ ::resource-get-failed
+ (fn [db [_ response]]
+   (-> db
+       (assoc :loading? false)
+       (assoc :found? false))))
