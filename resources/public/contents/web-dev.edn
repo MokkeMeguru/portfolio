@@ -31,9 +31,10 @@
      [:li [:a {:href "https://github.com/MokkeMeguru/tcs-service"} "Task Cabinet サーバサイド レポジトリ"]]
      [:li [:p "Duct x Reitit のサーバサイド開発 ~粗結合かつ Swagger な快適開発~ (2月頃公開)"]]
      ]
-    [:div.column
-     [:figure.image.is-16by9>iframe.has-ratio
-      {:src "./img/tcs-swagger.png"}]]]}
+    [:div.columns.is-centered
+     [:div.column.is-10
+      [:figure.image.is-16by9>img
+       { :src "./img/tcs-swagger.png"}]]]]}
   {:subtitle "WebPush Notification について"
    :description "Firebase にするか WebPush Notification を使うか"
    :content
