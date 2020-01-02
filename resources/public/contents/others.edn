@@ -1,0 +1,15 @@
+{:id "others"
+ :title "Others"
+ :contents
+ [{:subtitle "その他"
+   :description "就職・研究・趣味など"
+   :content
+   [:div
+    [:div.columns>div.column
+     [:p "就職に際しては,出来るだけ体を壊さないような環境であると良いと考えています。早期卒業に伴いスケジュールが過密な時期が連続することが多く,研究・開発・学習の時間を十分に取れない生活が長いため,就職後はマージンのある時間管理の元で安定した成長をしたいと考えています。"]
+     [:p "研究については時間がない中ではありますが,大学院の研究と自分の研究とを両立できるようなスケジュール・難易度管理を行なっていきたいと考えています。"]
+     [:p "趣味はサークル活動や自炊を通して料理を嗜んでいます。"]]
+    [:div.columns
+     [:div.column.is-6 [:figure.image>img  {:width "80%" :src "./img/donuts.png"}]]
+     [:div.column.is-6 [:figure.image>img {:width "80%" :src "./img/fishandpotato.jpg"}]]
+     ]]}]}

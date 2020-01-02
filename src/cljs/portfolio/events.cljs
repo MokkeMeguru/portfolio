@@ -15,7 +15,7 @@
 
 
 (re-frame/reg-event-fx
- ::load-test-content
+ ::load-content
  (fn [{:keys [db]} [_ id]]
    {:db (assoc db :loaded true)
     :http-xhrio {:method :get
@@ -31,6 +31,7 @@
    (-> db
        (assoc :loading? false)
        (assoc :found? true)
+       (assoc :data-id (-> response :id))
        (assoc :data response))))
 
 (re-frame/reg-event-db

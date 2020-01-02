@@ -1,4 +1,4 @@
-{:id "Introduction"
+{:id "introduction"
  :title "Introduction"
  :contents
  [{:subtitle "自己紹介"
@@ -63,6 +63,6 @@
       [:th "2017年10月"]
       [:td "応用情報技術者試験合格"]]
      [:tr
-      [:th "2019年12月"]
+      [:th "2019年11月"]
       [:td [:p "IDRユーザフォーラム 2019 企業賞受賞"] [:p "HTML構造を用いた文書の分析手法の提案：ニコニコ大百科の概要についての主語補完実験"]]]
      ]]}]}

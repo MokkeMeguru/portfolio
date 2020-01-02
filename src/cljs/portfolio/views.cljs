@@ -19,10 +19,10 @@
 (def title-to-file
   {"Introduction" "introduction"
    "VF project" "vf-project"
-   "About" "about"
    "NLP & ML" "nlp-ml"
    "Web Dev" "web-dev"
-   "Illust" "illust"})
+   "Illust" "illust"
+   "Others" "others"})
 
 (defn twitter-link []
   [:a.bd-tw-button.button
@@ -44,28 +44,30 @@
      [twitter-link]]]])
 
 (defn nav-panel []
-  [:nav#nav_box.navbar.box
-   [:div.navbar-brand
-    [:a.navbar-item {:href "https://mokkemeguru.github.io/portfolio/resources/public/index.html"} [:img#logo {:src "https://avatars0.githubusercontent.com/u/30849444?s=400&u=75bde9345fbaf950cceec1d8fc4dc68eff83507a&v=4"} ]]
-    [:a.navbar-burger.burger
-     {:aria-label "menu"
-      :role "button"
-      :aria-expanded "false"
-      :data-target "main-navbar"
-      :on-click #(toggle-class "main-navbar")}
-     [:span {:aria-hidden "true"}]
-     [:span {:aria-hidden "true"}]
-     [:span {:aria-hidden "true"}]]]
-   [:div#main-navbar.navbar-menu
-    [b/navbar-start
-     (map
-      (fn [content] ^{:key content}
-        [:a.nitem.navbar-item
-         {:on-click #(re-frame/dispatch-sync [::events/load-test-content (get title-to-file content)])}
-         content])
-          ["Introduction" "VF project" "About" "NLP & ML" "Web Dev" "Illust"])]
-    [nav-panel-end]
-    ]])
+  (let [content-id @(re-frame/subscribe [::subs/data-id])]
+   [:nav#nav_box.navbar.box
+     [:div.navbar-brand
+      [:a.navbar-item {:href "https://mokkemeguru.github.io/portfolio/resources/public/index.html"}
+       [:img#logo {:src "https://avatars0.githubusercontent.com/u/30849444?s=400&u=75bde9345fbaf950cceec1d8fc4dc68eff83507a&v=4"} ]]
+      [:a.navbar-burger.burger
+       {:aria-label "menu"
+        :role "button"
+        :aria-expanded "false"
+        :data-target "main-navbar"
+        :on-click #(toggle-class "main-navbar")}
+       [:span {:aria-hidden "true"}]
+       [:span {:aria-hidden "true"}]
+       [:span {:aria-hidden "true"}]]]
+     [:div#main-navbar.navbar-menu
+      [b/navbar-start
+       (map
+        (fn [content] ^{:key content}
+          [:a.nitem.navbar-item
+           {:on-click #(re-frame/dispatch-sync [::events/load-content (get title-to-file content)])}
+           (if (=  (get title-to-file content) content-id) [:p.has-text-link content] [:p content])])
+        ["Introduction" "VF project" "NLP & ML" "Web Dev" "Illust" "Others"])]
+      [nav-panel-end]
+      ]]))
 
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])
@@ -80,7 +82,8 @@
           (fn [content]
             (let [subtitle (-> content :subtitle)
                   description (-> content :description)
-                  cont (-> content :content)]
+                  cont (-> content :content)
+                  icon (-> content :icon)]
               ^{:key subtitle}
               [:div.columns.**is-desktop**
                [:div.column.is-1.**is-desktop**
@@ -88,7 +91,11 @@
                          :background-clip  "content-box"
                          :margin-top "1rem"}}]
                [:div.column.is-10.**is-desktop**>div.columns.**is-desktop**>div.column.is-8.is-offset-2>div.box
-                [:h2.title.is-spaced subtitle]
+                (if icon
+                  [:div.column>div.columns>div.column.is-paddingless-left>article.media
+                   [:div.media-content [:h2.title.is-spaced subtitle]]
+                   [:figure.media-right.image.is-48x48>img {:src  (str "img/" icon)}]]
+                  [:h2.title.is-spaced subtitle])
                 [:p description][:br]
                 cont]]))
           (-> @data :contents))])

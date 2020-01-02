@@ -1,0 +1,36 @@
+{:id "illust"
+ :title "Illust"
+ :contents
+ [{:subtitle "概要"
+   :description "イラスト作成・アイコン作成など"
+   :icon "myicon.png"
+   :content
+   [:div.columns
+    [:div.column.is-9
+     [:p "趣味としてイラストを描いており,大学の授業としても芸術の授業を選択するなどこの分野については高い興味があります。"]
+     [:p "またアイコン作成なども行なっており, Web Dev で紹介する Task Cabinet のアイコン作成は私が担当しています。"]
+     [:p "イラストは VF Project でもコアとなる技術なので今後共積極的に精進します。"]]
+    [:div.column.is-3
+     [:figure.image.is-96x96.container
+         [:img
+          {:src "./img/tcs-icon.png"}]]
+     [:p.has-text-centered "Task Cabinet のアイコン"]]]}
+  {:subtitle "イラストへのアクセス"
+   :description "アカウント情報"
+   :content
+   [:table.table.is-hoverable.is-fullwidth
+    [:thead
+     [:tr
+      [:th "サイト"]
+      [:th ""]]]
+    [:tbody
+     [:tr
+      [:th "Pixiv"]
+      [:th [:a {:href "https://www.pixiv.net/member.php?id=8679932"} "MokkeMeguru"]]
+      ]
+     [:tr
+      [:th "Irori"]
+      [:th [:a {:href "https://irori.app/@MeguruMokke"} "@MeguruMokke"]]]
+     [:tr
+      [:th "Twitter"]
+      [:th [:a {:href "https://twitter.com/MeguruMokke"} "物怪巡"]]]]]}]}

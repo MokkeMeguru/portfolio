@@ -1,13 +1,61 @@
-{:id "Introduction"
- :title "Introduction"
+{:id "vf-project"
+ :title "VF project"
  :contents
- [{:subtitle "自己紹介"
-   :description "趣味,性格を含めた簡潔な自己紹介"
+ [{:subtitle "VF Project とは"
+   :icon "sorce.png"
+   :description "VF (Virtual Friend) の概要"
    :content
    [:div
-    [:p "対話システムについて興味を持ち,深層学習を始めとした研究を大学/大学院で,より実務的なデータ収集・分析についてを外部/独自で行っている大学院生です。"]
-    [:p "普段は Qiita や Github で活動をしていますが,時間のあるときは息抜きとしてイラストを描いています。"]
-    [:p "また Web 開発などについては独学で行っており,このポートフォリオサイトもその成果物の一つです。"]
-    [:p "好みのプログラミング言語は Clojure / ClojureScript を始めとした Lisp ですが, Python や Java, Typescript を書くこともあります。深層学習のライブラリとしては Tensorflow 2.x 系と PyTorch を使っています。"]
-    [:p "人の作業や研究の手伝いを行うことが得意で好んでこれをします。"]]}
+    [:p "近年バーチャルな存在とのコミュニケーションが現実味を帯びてきています。"]
+    [:p "多くのユーザを抱えているものとしては Virtual YouTuber や,VRChatなどを挙げることが出来ますが、これらはn 対 1 / n 対 n な対話を行うツールとして確立されています。"]
+    [:p "またバーチャルな存在と言っても現状では人手の多くかかった存在との対話であることが一般的です。"]
+    [:p "しかし近年の最先端技術を眺めると,いくつかの分野では「人間」として対話するに十分な性能を持ったものが現れてきています。"]
+    [:p "本プロジェクトではこれらの最先端技術とメディアとを繋げることを目指します。"]]}
+  {:subtitle "プロジェクトの紹介ムービー"
+   :description ""
+   :content
+   [:div.columns
+    [:div.column
+     [:figure.image.is-16by9>iframe.has-ratio
+      {:width "640"
+       :height "360"
+       :frameborder "0"
+       :src
+       "https://drive.google.com/file/d/1ECOQfl4PorgSYXtOOG3wnoLszG3i-Jcv/preview"}] ]]}
+  {:subtitle "VF Project の構成"
+   :description ""
+   :content
+   [:div
+    [:p "VF Project は2D分野,3D分野,そして対話システム分野に分かれて開発が行われています(現在対話システム分野の進捗を中心に活動中)。"]
+    [:p "2D 分野としては Live2D を用いたモデルの作成・モデルをどのような入力から動作させるべきなのかの技術探索を行なっています。"]
+    [:p "3D 分野としては Unity と Blender を用いた技術を学習しています。"]
+    [:p "対話システム分野では「どのようにして対話AIが人らしくなるか」を重点に置き、既存の対話システムの拡張として「対話システムの個性獲得」を研究しています。"]
+    [:p "また対話システム分野ではこれに並行して「現代知識の獲得」についても研究を行なっており、近年ではニコニコ大百科の解析をを行い知識ベースを構築するための研究を行なっています。"]]}
+  {:subtitle "プロジェクトの変遷"
+   :description ""
+   :content
+   [:div.columns
+    [:div.column>table.table.is-hoverable.is-fullwidth
+     [:thead
+      [:tr
+       [:th "年月"]
+       [:th ""]]]
+      [:tbody
+       [:tr
+        [:th "2018年10月"]
+        [:th "COJT (Campus OJT) の一環としてプロジェクトが開始"]]
+       [:tr
+        [:th "2018年2月"]
+        [:th [:p "COJT での発表"]
+         [:a {:href  "https://www.youtube.com/watch?v=GOw3qMKOeSE&t=992s"} "Youtube リンク"]]]
+       [:tr
+        [:th "2018年3月"]
+        [:th [:p "卒業研究として用いた技術について紹介"]
+         [:a {:href "https://drive.google.com/file/d/1H5-Pbd1VOCriSPw1EraQ22nEKVg5Zxrr/view?usp=sharing"} "drive リンク"]]]
+       [:tr
+        [:th "2018年4月"]
+        [:th [:p "修士課程として自然言語処理分野,深層学習分野の研究に着手"]]]
+       [:tr
+        [:th "2018年7月"]
+        [:th [:p "サイボウズ・ラボユースとして自然言語処理分野の研究に着手"]]]]]]}
   ]}

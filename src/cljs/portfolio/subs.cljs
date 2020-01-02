@@ -13,6 +13,12 @@
    (:loaded db)))
 
 (re-frame/reg-sub
+ ::data-id
+ (fn [db]
+   (:data-id db)))
+
+
+(re-frame/reg-sub
  ::data
  (fn [db]
    (:data db)))

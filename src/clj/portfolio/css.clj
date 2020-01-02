@@ -16,4 +16,6 @@
                  :display "flex"
                  :margin-left "1rem"}]
    [:#nav_box {:padding 0}]
-   [:.nitem {:font-size "1.5rem"}]])
+   [:.nitem {:font-size "1.5rem"}]]
+  [:.is-paddingless-left {:padding-left 0}]
+  [:p {:padding-top "0.75rem" }])
