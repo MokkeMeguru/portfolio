@@ -2,14 +2,13 @@
  :title "Introduction"
  :contents
  [{:subtitle "自己紹介"
-   :description "趣味,性格を含めた簡潔な自己紹介"
+   :description "簡潔な自己紹介"
    :content
    [:div
     [:p "対話システムについて興味を持ち,深層学習を始めとした研究を大学/大学院で,より実務的なデータ収集・分析についてを外部/独自で行っている大学院生です。"]
     [:p "普段は Qiita や Github で活動をしていますが,時間のあるときは息抜きとしてイラストを描いています。"]
     [:p "また Web 開発などについては独学で行っており,このポートフォリオサイトもその成果物の一つです。"]
-    [:p "好みのプログラミング言語は Clojure / ClojureScript を始めとした Lisp ですが, Python や Java, Typescript を書くこともあります。深層学習のライブラリとしては Tensorflow 2.x 系と PyTorch を使っています。"]
-    [:p "人の作業や研究の手伝いを行うことが得意で好んでこれをします。"]]}
+    [:p "好みのプログラミング言語は Clojure / ClojureScript を始めとした Lisp ですが, Python や Java, Typescript を書くこともあります。深層学習のライブラリとしては Tensorflow 2.x 系と PyTorch を使っています。"]]}
   {:subtitle "プロフィール"
    :description "ソーシャルメディア等へのアクセス"
    :content

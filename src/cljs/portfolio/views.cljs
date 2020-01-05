@@ -16,14 +16,6 @@
        (.remove el-classList toggled-class)
        (.add el-classList toggled-class)))))
 
-(def title-to-file
-  {"Introduction" "introduction"
-   "VF project" "vf-project"
-   "NLP & ML" "nlp-ml"
-   "Web Dev" "web-dev"
-   "Illust" "illust"
-   "Others" "others"})
-
 (defn twitter-link []
   [:a.bd-tw-button.button
    {:data-social-network "Twitter"
@@ -44,7 +36,8 @@
      [twitter-link]]]])
 
 (defn nav-panel []
-  (let [content-id @(re-frame/subscribe [::subs/data-id])]
+  (let [content-id @(re-frame/subscribe [::subs/data-id])
+        nav-contents @(re-frame/subscribe [::subs/nav-contents])]
    [:nav#nav_box.navbar.box
      [:div.navbar-brand
       [:a.navbar-item {:href "https://mokkemeguru.github.io/portfolio/resources/public/index.html"}
@@ -63,9 +56,9 @@
        (map
         (fn [content] ^{:key content}
           [:a.nitem.navbar-item
-           {:on-click #(re-frame/dispatch-sync [::events/load-content (get title-to-file content)])}
-           (if (=  (get title-to-file content) content-id) [:p.has-text-link content] [:p content])])
-        ["Introduction" "VF project" "NLP & ML" "Web Dev" "Illust" "Others"])]
+           {:on-click #(re-frame/dispatch-sync [::events/load-content (get nav-contents content)])}
+           (if (=  (get nav-contents content) content-id) [:p.has-text-link content] [:p content])])
+        (keys nav-contents))]
       [nav-panel-end]
       ]]))
 

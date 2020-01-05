@@ -8,6 +8,12 @@
    (:name db)))
 
 (re-frame/reg-sub
+ ::nav-contents
+ (fn [db]
+   (:nav-contents db)))
+
+
+(re-frame/reg-sub
  ::loaded
  (fn [db]
    (:loaded db)))
