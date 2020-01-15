@@ -16,6 +16,15 @@
        (.remove el-classList toggled-class)
        (.add el-classList toggled-class)))))
 
+(defn remove-class
+  ([id]
+   (toggle-class id "is-active"))
+  ([id toggled-class]
+   (let [el-classList (.-classList (.getElementById js/document id))]
+     (if (.contains el-classList toggled-class)
+       (.remove el-classList toggled-class)))))
+
+
 (defn twitter-link []
   [:a.bd-tw-button.button
    {:data-social-network "Twitter"
@@ -56,7 +65,10 @@
        (map
         (fn [content] ^{:key content}
           [:a.nitem.navbar-item
-           {:on-click #(re-frame/dispatch-sync [::events/load-content (get nav-contents content)])}
+           {:on-click
+            #(do
+               (re-frame/dispatch-sync [::events/load-content (get nav-contents content)])
+               (remove-class "main-navbar"))}
            (if (=  (get nav-contents content) content-id) [:p.has-text-link content] [:p content])])
         (keys nav-contents))]
       [nav-panel-end]
