@@ -65,7 +65,8 @@
        (map
         (fn [content] ^{:key content}
           [:a.nitem.navbar-item
-           {:on-click
+           {:href (str "#" content)
+            :on-click
             #(do
                (re-frame/dispatch-sync [::events/load-content (get nav-contents content)])
                (remove-class "main-navbar"))}
