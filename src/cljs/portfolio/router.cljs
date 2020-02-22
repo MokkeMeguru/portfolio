@@ -41,7 +41,7 @@
     (do
       (re-frame/dispatch [::events/navigated new-match])
       (re-frame/dispatch [::events/load-content (->  new-match .-data :name name)]))
-    (hod/get-item hod/session-storage "redirec")
+    (hod/get-item hod/session-storage "redirect")
     (do
       (re-frame/dispatch [::events/load-content (hod/get-item hod/session-storage "redirect")])
       (hod/clear! hod/session-storage)
