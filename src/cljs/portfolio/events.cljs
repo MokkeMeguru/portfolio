@@ -19,6 +19,7 @@
 (re-frame/reg-event-fx
  ::load-content
  (fn [{:keys [db]} [_ id]]
+   (.log js/console (:content-loc db))
    {:db (assoc db :loaded true)
     :http-xhrio {:method :get
                  :uri (str "./contents/" (:content-loc db) ".edn")
