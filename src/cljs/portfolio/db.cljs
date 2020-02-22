@@ -2,7 +2,6 @@
 
 (def default-db
   {:current-route nil
-   :state {}
    :nav-contents
    {"Introduction" "introduction"
     "VF project" "vf-project"

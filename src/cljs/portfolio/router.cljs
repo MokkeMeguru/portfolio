@@ -1,31 +1,51 @@
 (ns portfolio.router
-  (:require [bidi.bidi :as bidi]
-            [pushy.core :as pushy]
-            [re-frame.core :as re-frame]
+  (:require [re-frame.core :as re-frame]
             [portfolio.db :as db]
-            [portfolio.events :as events]))
+            [reitit.frontend :as rf]
+            [portfolio.events :as events]
+            [reitit.frontend.easy :as rfe]
+            [reitit.coercion.spec :as rcs]))
 
+(defn href
+  "Return relative url for given route. Url can be used in HTML links."
+  ([k]
+   (href k nil nil))
+  ([k params]
+   (href k params nil))
+  ([k params query]
+   (rfe/href k params query)))
 
 (def routes
   ["/"
-   (conj
-    (vec (map (fn [v] [v (keyword v)]) (vals (:nav-contents db/default-db))))
-    [true :not-found])])
+   [""
+    {:name ::home
+     :link-text "HOME"}]
+   ["introduction"
+    {:name ::introduction
+     :link-text "introduction"}]
+   ["vf-project"
+    {:name ::vf-project}]
+   ["nlp-ml"
+    {:name ::nlp-ml}]
+   ["web-dev"
+    {:name ::web-dev}]
+   ["illust"
+    {:name ::illust}]
+   ["others"
+    {:name ::others}]])
 
-(defn set-page! [match]
-  (re-frame/dispatch-sync [::events/set-page match]))
+(defn on-navigate [new-match]
+  (when new-match
+    (re-frame/dispatch [::events/navigated new-match])))
 
-(def history
-  (pushy/pushy set-page! (partial bidi/match-route routes)))
-
-(defn- parse-url
-  [url]
-  (bidi/match-route routes url))
-
-(defn start!
-  []
-  (pushy/start! history))
-
-(def url-for (partial bidi/path-for routes))
+(def router
+  (rf/router
+   routes
+   {:data {:coercion rcs/coercion}}))
 
 
+(defn init-routes! []
+  (rfe/start!
+   router
+   on-navigate
+   {:use-fragment true}))

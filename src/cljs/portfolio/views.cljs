@@ -1,7 +1,8 @@
 (ns portfolio.views
   (:require
     [re-frame.core :as re-frame]
-   [portfolio.subs :as subs]
+    [portfolio.subs :as subs]
+    [reitit.frontend :as rf]
    [bulma-cljs.core :as b]
    [cljs.tools.reader.edn :as edn]
    [portfolio.router :as router]
@@ -66,15 +67,19 @@
        (map
         (fn [content] ^{:key content}
           [:a.nitem.navbar-item
-           {:href (router/url-for (keyword (get nav-contents content)))
-            :on-click
+           {:on-click
             #(do
+               (print "keyword "(keyword ":router" (get nav-contents content)))
+               (print (rf/match-by-name router/router (keyword :portfolio.router (get nav-contents content))))
                (re-frame/dispatch-sync [::events/load-content (get nav-contents content)])
+               (re-frame/dispatch [::events/navigate (keyword :portfolio.router (get nav-contents content))])
                (remove-class "main-navbar"))}
            (if (=  (get nav-contents content) content-id) [:p.has-text-link content] [:p content])])
         (keys nav-contents))]
       [nav-panel-end]
       ]]))
+
+
 
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])
