@@ -3,7 +3,7 @@ name: Clojure CI
 on: 
   push:
     branches: 
-      - production
+      - master
 
 jobs:
   build-deploy:
@@ -57,10 +57,10 @@ jobs:
         git config --local user.email "meguru.mokke@gmail.com"
         git config --local user.name "MokkeMeguru"
         date > sacrifice.txt
-        git commit -m "push from production" -a
+        git commit -m "push from master" -a
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.PAT_TO_GITHUB_ACTION }}
         force: true
-        branch: master
+        branch: production
