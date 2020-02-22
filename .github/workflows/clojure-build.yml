@@ -50,9 +50,13 @@ jobs:
 
     - name: build garden	
       run: lein garden once	
-    - name: deploy-action		   
-      uses: rohit-gohri/deploy-action@v0.1.0
-      env:		      
-        DEPLOY_ENV: production
-        DEPLOY_REF: master		  
-        GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
+      
+    - name: Commit files
+      run: |
+        git config --local user.email "meguru.mokke@gmail.com"
+        git config --local user.name "MokkeMeguru"
+        git commit -m "Add changes" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
