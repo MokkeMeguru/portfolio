@@ -36,7 +36,7 @@
 
 (defn on-navigate [new-match]
   (when new-match
-    (re-frame/dispatch [::events/navigated new-match])))
+    (re-frame/dispatch-sync [::events/navigated new-match])))
 
 (def router
   (rf/router
