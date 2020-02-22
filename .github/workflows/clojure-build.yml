@@ -12,6 +12,23 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: cache_node_js
+      uses: actions/cache@1
+      env:
+        cache-name: node-modules
+      with: 
+        path: ~/.npm
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/project.clj') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+          
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - run: npm install react
+
+    
     - name: Cache_leiningen_depth
       uses: actions/cache@v1
       env:
@@ -24,6 +41,7 @@ jobs:
           ${{ runner.os }}-build-
           ${{ runner.os }}-
 
+    
     - name: Install dependencies
       run: lein deps
 
