@@ -34,7 +34,7 @@ jobs:
       env:
         cache-name: cache-lein-deps
       with: 
-        path: ~/.lein
+        path: ~/.m2
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/project.clj') }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
