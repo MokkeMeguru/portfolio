@@ -60,6 +60,7 @@
   (rfe/start!
    router
    on-navigate
-   {:use-fragment false}))
-
+   {:use-fragment true}))
+;; true for github pages
+;; false for firebase
 
