@@ -34,7 +34,7 @@ jobs:
       env:
         cache-name: cache-lein-deps
       with: 
-        path: ~/.lein
+        path: ~/.m2
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/project.clj') }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
@@ -50,10 +50,9 @@ jobs:
 
     - name: build garden	
       run: lein garden once	
-
-    - name: deploy-action	
-      uses: rohit-gohri/deploy-action@v0.1.0	
-      env:	
-        DEPLOY_ENV: production	
-        DEPLOY_REF: master	
-        GITHUB_TOKEN:  ${{ secrets.gh-pages }}
+    - name: deploy-action		   
+      uses: rohit-gohri/deploy-action@v0.1.0
+      env:		      
+        DEPLOY_ENV: master	
+        DEPLOY_REF: production		  
+        GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
