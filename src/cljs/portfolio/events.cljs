@@ -28,6 +28,7 @@
                    :on-success [::resource-get-success]
                    :on-failure [::resource-get-failed]}})))
 
+
 (re-frame/reg-event-fx
  ::navigate
  (fn [db [_ & route]]
