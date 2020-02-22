@@ -5,6 +5,7 @@
    [day8.re-frame.tracing :refer-macros [fn-traced defn-traced]]
    [day8.re-frame.http-fx]
    [reitit.frontend.controllers :as rfc]
+   [reitit.core :as r]
    [reitit.frontend.easy :as rfe]
    [ajax.core :as ajax]
    [ajax.edn :as ajaxedn]
@@ -16,6 +17,17 @@
    db/default-db))
 
 (re-frame/reg-event-fx
+ ::load-content
+ (fn [{:keys [db]} [_ id]]
+   {:db (assoc db :loaded true)
+    :http-xhrio {:method :get
+                 :uri (str "./contents/" (:content-loc db) ".edn")
+                 :timeout 2000
+                 :response-format (ajaxedn/edn-response-format)
+                 :on-success [::resource-get-success]
+                 :on-failure [::resource-get-failed]}}))
+
+(re-frame/reg-event-fx
  ::navigate
  (fn [db [_ & route]]
    {::navigate! route}))
@@ -25,25 +37,15 @@
  (fn [db [_ new-match]]
    (let [old-match (:current-route db)
          controllers (rfc/apply-controllers (:controllers old-match) new-match)]
-     (assoc db :current-route (assoc new-match :controllers controllers)))))
+     (-> db
+         (assoc :content-loc (->  new-match .-data :name name))
+         (assoc :current-route (assoc new-match :controllers controllers))))))
 
 
 (re-frame/reg-fx
  ::navigate!
  (fn [route]
-   (print route)
    (apply rfe/push-state route)))
-
-(re-frame/reg-event-fx
- ::load-content
- (fn [{:keys [db]} [_ id]]
-   {:db (assoc db :loaded true)
-    :http-xhrio {:method :get
-                 :uri (str "./contents/" id ".edn")
-                 :timeout 2000
-                 :response-format (ajaxedn/edn-response-format)
-                 :on-success [::resource-get-success]
-                 :on-failure [::resource-get-failed]}}))
 
 (re-frame/reg-event-db
  ::resource-get-success
