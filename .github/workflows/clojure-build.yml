@@ -1,0 +1,32 @@
+name: Clojure CI
+
+on: 
+  push:
+    branches: 
+      - master
+
+jobs:
+  build-deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: Cache leiningen's depth
+      env:
+        cache-name: cache-lein-deps
+      with: 
+        path: ~/.lein
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/project.clj') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+    - name: Install dependencies
+      run: lein deps
+    - name: build cljs
+      run: lein prod
+    - name: build garden
+      run: lein garden once
+    - name: deploy-action
+      uses: rohit-gohri/deploy-action@v0.1.0
