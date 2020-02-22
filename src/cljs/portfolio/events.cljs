@@ -19,11 +19,11 @@
 (re-frame/reg-event-fx
  ::load-content
  (fn [{:keys [db]} [_ id]]
-   (let [_id (if (= "home"(:content-loc db)) "introduction" (:content-loc db))]
+   (let [_id (if (= "home"(:content-loc db)) "introduction" id)]
      (.log js/console (:content-loc db))
      {:db (assoc db :loaded true)
       :http-xhrio {:method :get
-                   :uri (str "./contents/" id ".edn")
+                   :uri (str "./contents/" _id ".edn")
                    :timeout 2000
                    :response-format (ajaxedn/edn-response-format)
                    :on-success [::resource-get-success]
