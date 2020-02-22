@@ -15,9 +15,10 @@ jobs:
     - uses: actions/checkout@v2
       with: 
         persist-credentials: False
-    - name: deploy to gh-pages
-      uses: JamesIves/github-pags-deploy-action@release/v3
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: public
+        deploy_key: ${{ secrets.gh-pages }}
+        # github_token: ${{ secrets.GITHUB_TOKEN }}
+        # personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        publish_dir: ./public
