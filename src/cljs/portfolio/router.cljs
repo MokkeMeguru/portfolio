@@ -15,7 +15,7 @@
    (href k params nil))
   ([k params query]
    (rfe/href k params query)))
-;; (= ::home (keyword :portfolio.router "home"))
+
 (def routes
   ["/"
    [""
@@ -37,15 +37,14 @@
 
 (defn on-navigate [new-match]
   (cond
+    (hod/get-item hod/session-storage "redirect")
+    (do
+      (re-frame/dispatch [::events/load-content (hod/get-item hod/session-storage "redirect")])
+      (hod/clear! hod/session-storage))
     new-match
     (do
       (re-frame/dispatch [::events/navigated new-match])
       (re-frame/dispatch [::events/load-content (->  new-match .-data :name name)]))
-    (hod/get-item hod/session-storage "redirect")
-    (do
-      (re-frame/dispatch [::events/load-content (hod/get-item hod/session-storage "redirect")])
-      (hod/clear! hod/session-storage)
-      )
     :default
     (do
       (re-frame/dispatch [::events/load-content "introduction"]))))
@@ -61,6 +60,6 @@
   (rfe/start!
    router
    on-navigate
-   {:use-fragment true}))
+   {:use-fragment false}))
 
 
