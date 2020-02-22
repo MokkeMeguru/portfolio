@@ -69,8 +69,6 @@
           [:a.nitem.navbar-item
            {:on-click
             #(do
-               (print "keyword "(keyword ":router" (get nav-contents content)))
-               (print (rf/match-by-name router/router (keyword :portfolio.router (get nav-contents content))))
                (re-frame/dispatch-sync [::events/load-content (get nav-contents content)])
                (re-frame/dispatch [::events/navigate (keyword :portfolio.router (get nav-contents content))])
                (remove-class "main-navbar"))}
