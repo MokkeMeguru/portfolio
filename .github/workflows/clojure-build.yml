@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: Cache_leiningen's_depth
+    - name: Cache_leiningen's_depth
       env:
         cache-name: cache-lein-deps
       with: 
