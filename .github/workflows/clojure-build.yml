@@ -1,4 +1,5 @@
 name: Clojure CI
+
 on: 
   push:
     branches: 
@@ -22,12 +23,16 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
+
     - name: Install dependencies
       run: lein deps
+
     - name: build cljs
       run: lein prod
+
     - name: build garden
       run: lein garden once
+
     - name: deploy-action
       uses: rohit-gohri/deploy-action@v0.1.0
       env:
