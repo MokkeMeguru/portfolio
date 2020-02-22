@@ -2,20 +2,19 @@
   (:require [bidi.bidi :as bidi]
             [pushy.core :as pushy]
             [re-frame.core :as re-frame]
-            [portfolio.db :as db]))
-
-(def state (atom {}))
-
+            [portfolio.db :as db]
+            [portfolio.events :as events]))
 
 
 (def routes
   ["/"
-   (merge
-    {"" :introduction}
-    (into (sorted-map) (map (fn [v] [v (keyword v)]) (vals (:nav-contents db/default-db)))))])
+   (conj
+    (into [["" :introduction]]
+          (vec (map (fn [v] [v (keyword v)]) (vals (:nav-contents db/default-db)))))
+    [true :not-found])])
 
 (defn set-page! [match]
-  (re-frame/dispatch-sync [::set-page match]))
+  (re-frame/dispatch-sync [::events/set-page match]))
 
 (def history
   (pushy/pushy set-page! (partial bidi/match-route routes)))

@@ -25,6 +25,11 @@
                  :on-success [::resource-get-success]
                  :on-failure [::resource-get-failed]}}))
 
+(re-frame/reg-event-fx
+ ::set-page
+ (fn [{:keys [db]} [_ match]]
+   {:db (assoc-in db [:state :page] match)}))
+
 (re-frame/reg-event-db
  ::resource-get-success
  (fn [db [_ response]]
@@ -40,9 +45,3 @@
    (-> db
        (assoc :loading? false)
        (assoc :found? false))))
-
-(re-frame/reg-event-db
- ::set-page
- (fn [db [_ match]]
-   (-> db
-       (assoc-in [:state :page] match))))

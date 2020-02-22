@@ -66,12 +66,11 @@
        (map
         (fn [content] ^{:key content}
           [:a.nitem.navbar-item
-           {:href (get nav-contents content)
+           {:href (router/url-for (keyword (get nav-contents content)))
             :on-click
             #(do
                (.log js/console (router/url-for :introduction))
                (re-frame/dispatch-sync [::events/load-content (get nav-contents content)])
-               ;; (.pushState js/history (.-state js/window) nil (get nav-contents content))
                (remove-class "main-navbar"))}
            (if (=  (get nav-contents content) content-id) [:p.has-text-link content] [:p content])])
         (keys nav-contents))]
