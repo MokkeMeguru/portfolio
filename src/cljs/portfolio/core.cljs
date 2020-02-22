@@ -5,6 +5,7 @@
    [portfolio.events :as events]
    [portfolio.views :as views]
    [portfolio.config :as config]
+   [portfolio.router :as router]
    ))
 
 
@@ -18,6 +19,7 @@
                   (.getElementById js/document "app")))
 
 (defn init []
+  (router/start!)
   (re-frame/dispatch-sync [::events/initialize-db])
   (re-frame/dispatch-sync [::events/load-content "introduction"])
   (dev-setup)

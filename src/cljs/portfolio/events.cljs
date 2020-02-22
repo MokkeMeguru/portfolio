@@ -40,3 +40,9 @@
    (-> db
        (assoc :loading? false)
        (assoc :found? false))))
+
+(re-frame/reg-event-db
+ ::set-page
+ (fn [db [_ match]]
+   (-> db
+       (assoc-in [:state :page] match))))

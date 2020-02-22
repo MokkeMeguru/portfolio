@@ -4,6 +4,7 @@
    [portfolio.subs :as subs]
    [bulma-cljs.core :as b]
    [cljs.tools.reader.edn :as edn]
+   [portfolio.router :as router]
    [portfolio.events :as events]
    [shadow.resource :as rc]))
 
@@ -50,7 +51,7 @@
    [:nav#nav_box.navbar.box
      [:div.navbar-brand
       [:a.navbar-item {:href "https://mokkemeguru.github.io/portfolio/resources/public/index.html"}
-       [:img#logo {:src "https://avatars0.githubusercontent.com/u/30849444?s=400&u=75bde9345fbaf950cceec1d8fc4dc68eff83507a&v=4"} ]]
+       [:img#logo {:src "https://avatars0.githubusercontent.com/u/30849444?s=400&u=75bde9345fbaf950cceec1d8fc4dc68eff83507a&v=4"}]]
       [:a.navbar-burger.burger
        {:aria-label "menu"
         :role "button"
@@ -65,10 +66,12 @@
        (map
         (fn [content] ^{:key content}
           [:a.nitem.navbar-item
-           {:on-click
+           {:href (get nav-contents content)
+            :on-click
             #(do
+               (.log js/console (router/url-for :introduction))
                (re-frame/dispatch-sync [::events/load-content (get nav-contents content)])
-               (.pushState js/history (.-state js/window) nil (get nav-contents content))
+               ;; (.pushState js/history (.-state js/window) nil (get nav-contents content))
                (remove-class "main-navbar"))}
            (if (=  (get nav-contents content) content-id) [:p.has-text-link content] [:p content])])
         (keys nav-contents))]

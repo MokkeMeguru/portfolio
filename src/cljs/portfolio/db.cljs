@@ -1,7 +1,8 @@
 (ns portfolio.db)
 
 (def default-db
-  {:nav-contents
+  {:state {}
+   :nav-contents
    {"Introduction" "introduction"
     "VF project" "vf-project"
     "NLP & ML" "nlp-ml"
