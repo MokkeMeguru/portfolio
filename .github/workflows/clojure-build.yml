@@ -3,7 +3,7 @@ name: Clojure CI
 on: 
   push:
     branches: 
-      - master
+      - production
 
 jobs:
   build-deploy:
@@ -53,6 +53,6 @@ jobs:
     - name: deploy-action		   
       uses: rohit-gohri/deploy-action@v0.1.0
       env:		      
-        DEPLOY_ENV: master	
-        DEPLOY_REF: production		  
+        DEPLOY_ENV: production
+        DEPLOY_REF: master		  
         GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
