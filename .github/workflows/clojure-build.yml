@@ -26,16 +26,3 @@ jobs:
 
     - name: Install dependencies
       run: lein deps
-
-    - name: build cljs
-      run: lein prod
-
-    - name: build garden
-      run: lein garden once
-
-    - name: deploy-action
-      uses: rohit-gohri/deploy-action@v0.1.0
-      env:
-        DEPLOY_ENV: production
-        DEPLOY_REF: master
-        GITHUB_TOKEN:  ${{ secrets.gh-pages }}
