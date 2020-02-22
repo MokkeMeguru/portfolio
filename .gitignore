@@ -9,3 +9,5 @@ out
 /.nrepl-port
 /resources/public/js/compiled/cljs-runtime/
 /.lein-repl-history
+/resources/public/.firebase/
+/resources/public/firebase-debug.log
