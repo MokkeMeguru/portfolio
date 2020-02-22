@@ -8,5 +8,4 @@ out
 /.dir-locals.el
 /.nrepl-port
 /resources/public/js/compiled/cljs-runtime/
-/resources/public/js/
 /.lein-repl-history
