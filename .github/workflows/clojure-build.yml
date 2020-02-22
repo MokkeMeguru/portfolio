@@ -55,6 +55,8 @@ jobs:
       run: |
         git config --local user.email "meguru.mokke@gmail.com"
         git config --local user.name "MokkeMeguru"
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git commit -am "Build from production"
-        git push origin master
+        git commit -m "update from production" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
