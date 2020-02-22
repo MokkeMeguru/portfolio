@@ -4,6 +4,7 @@
    [portfolio.db :as db]
    [day8.re-frame.tracing :refer-macros [fn-traced defn-traced]]
    [day8.re-frame.http-fx]
+   [reitit.frontend.controllers :as rfc]
    [ajax.core :as ajax]
    [ajax.edn :as ajaxedn]
    ))
@@ -13,13 +14,26 @@
  (fn-traced [_ _]
    db/default-db))
 
+(re-frame/reg-event-fx
+ ::navigage
+ (fn [db [_ & route]]
+   {::navigate! route}))
+
+(re-frame/reg-event-db
+ ::navigated
+ (fn [db [_ new-match]]
+   (let [old-match (:current-route db)
+         controllers (rfc/apply-controllers (:controllers old-match) new-match)]
+     (assoc db :current-route (assoc new-match :controllers controllers)))))
+
+
 
 (re-frame/reg-event-fx
  ::load-content
  (fn [{:keys [db]} [_ id]]
    {:db (assoc db :loaded true)
     :http-xhrio {:method :get
-                 :uri (str "./portfolio/contents/" id ".edn")
+                 :uri (str "./contents/" id ".edn")
                  :timeout 2000
                  :response-format (ajaxedn/edn-response-format)
                  :on-success [::resource-get-success]

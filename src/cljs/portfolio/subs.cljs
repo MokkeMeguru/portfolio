@@ -12,6 +12,10 @@
  (fn [db]
    (:nav-contents db)))
 
+(re-frame/reg-sub
+ ::current-route
+ (fn [db]
+   (:current-route db)))
 
 (re-frame/reg-sub
  ::loaded

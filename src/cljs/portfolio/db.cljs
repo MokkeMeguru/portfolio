@@ -1,7 +1,8 @@
 (ns portfolio.db)
 
 (def default-db
-  {:state {}
+  {:current-route nil
+   :state {}
    :nav-contents
    {"Introduction" "introduction"
     "VF project" "vf-project"
