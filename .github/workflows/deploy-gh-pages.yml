@@ -1,0 +1,23 @@
+name: Push to Github Pages
+
+on: 
+  push:
+    branches: 
+      - master
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with: 
+        persist-credentials: False
+    - name: deploy to gh-pages
+      uses: JamesIves/github-pags-deploy-action@release/v3
+      with:
+        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: public
