@@ -69,7 +69,6 @@
            {:href (router/url-for (keyword (get nav-contents content)))
             :on-click
             #(do
-               (.log js/console (router/url-for :introduction))
                (re-frame/dispatch-sync [::events/load-content (get nav-contents content)])
                (remove-class "main-navbar"))}
            (if (=  (get nav-contents content) content-id) [:p.has-text-link content] [:p content])])

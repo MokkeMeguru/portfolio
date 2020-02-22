@@ -7,10 +7,9 @@
 
 
 (def routes
-  ["/portfolio"
+  ["/"
    (conj
-    (into [["" :introduction]]
-          (vec (map (fn [v] [v (keyword v)]) (vals (:nav-contents db/default-db)))))
+    (vec (map (fn [v] [v (keyword v)]) (vals (:nav-contents db/default-db))))
     [true :not-found])])
 
 (defn set-page! [match]
@@ -28,3 +27,5 @@
   (pushy/start! history))
 
 (def url-for (partial bidi/path-for routes))
+
+
