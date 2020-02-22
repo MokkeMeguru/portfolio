@@ -1,0 +1,55 @@
+{:id "web-dev"
+ :title "Web Dev"
+ :contents
+ [{:subtitle "概要"
+   :description "Web 開発について"
+   :content
+   [:div
+    [:div[:p "昨年頃から COJT  (Campus OJT) や enPiT-BizSysD を通じてアプリケーション開発の実習を行なっています。" ]
+     [:p "TypeScript や Django を用いることも多いですが,どちらかといえば Clojure / ClojureScript を用いて開発を行なっています。"]
+     [:p "Clojure は Lisp の方言で, 主にJVM で動作します。このため Java の豊富なライブラリが使える他, Lisp の REPL を用いた高速な開発を行うことが出来ます。実際にアジャイルなどの開発で即座に開発を行なってきました。"]
+     [:p "ClojureScript は JavaScript を対象とした Clojure のコンパイラです。簡潔に言うと Clojure と同じシンタックスで JavaScript を記述することが出来ます。また Reactと相性が良く, SPA 開発等でシンタックスに混乱することなく開発が出来るためこちらを好んで使っています。"]
+     [:p "この Profile も ClojureScript + React を用いた SPA として実現されています。"]]
+    [:div.content>ul
+     [:li [:a {:href "https://clojure.org/"} "Clojure"]]
+     [:li [:a {:href "http://clojurescript.org/"} "ClojureScript"]]
+     [:li [:a {:href "https://github.com/day8/re-frame"} "re-frame (このページを作るために用いたフレームワーク)"]]
+     [:li "ClojureScript + Github Pages でポートフォリオサイトを作る (2月頃公開予定)"]]]}
+  {:subtitle "Task Cabinet について"
+   :description "Typescript x Angular + Clojure x Duct x Reitit"
+   :content
+   [:div
+    [:div
+     [:p "2019年1月現在,Task Cabinet というアプリケーションを実習の一貫としてチーム開発しています。"]
+     [:p "Task Cabinet はタスク (やるべきこと) を「素敵なタイミング」で通知することを主軸に置いたツールで,私は主にDBを含めたサーバサイドの開発を請け負っています。"]
+     [:p "クライアントサイドについてはコードのチェックや (WebPush Notification のような) 技術的補助をしています。"]
+     [:br]
+     [:p "サーバサイドでは Clojure のフレームワークである Duct, Reitit を組み合わせる方法を開発しました。これによって Swagger を開発に持ち込むことが出来,クライアントサイドのチームと快適に開発を行うことが出来ます。"]]
+    [:div.content>ul
+     [:li [:a {:href "https://enpitut2019.github.io/task-cabinet/"} "Task Cabinet アプリページ"]]
+     [:li [:a {:href "https://github.com/enpitut2019/task-cabinet"} "Task Cabinet クライアントサイド レポジトリ"]]
+     [:li [:a {:href "https://github.com/MokkeMeguru/tcs-service"} "Task Cabinet サーバサイド レポジトリ"]]
+     [:li [:p "Duct x Reitit のサーバサイド開発 ~粗結合かつ Swagger な快適開発~ (2月頃公開)"]]
+     ]
+    [:div.columns.is-centered
+     [:div.column.is-10
+      [:figure.image.is-16by9>img
+       { :src "./img/tcs-swagger.png"}]]]]}
+  {:subtitle "WebPush Notification について"
+   :description "Firebase にするか WebPush Notification を使うか"
+   :content
+   [:div
+    [:div
+     [:p "Task Cabinet は通知が主題であるため,当然通知に関する知識が必要でした。このため Push 通知に関する知見をまとめる必要がありました。"]
+     [:p "今回は長期的に走らせるプロジェクトになるか未定であったため,Firebaseを使わず WebPush Notification を用いて通知を実装しました。"]
+     [:p "大きな問題として,この技術はクライアントとサーバの密接な連携が必要であることがあり,いくらかの実装と記事を作成しました。"]]
+    [:div.content>ul
+     [:li [:a {:href "https://qiita.com/MeguruMokke/items/84c5fe52b39da6d624d2"} "WebPush Notification に関するサンプル紹介"]]]]}
+  {:subtitle "Django を用いた開発について"
+   :description ""
+   :content
+   [:div
+    [:div
+     [:p "Django を用いた開発については簡単に Rest Framework を中心に学習し,最新のバージョンについては簡単なチュートリアルを作成し,公開しています。"]]
+    [:div.content>ul
+     [:li [:a {:href "https://qiita.com/MeguruMokke/items/bbb0e389698537c6e4cf"} "Django Rest Framework 2.x のチュートリアル"]]]]}]}

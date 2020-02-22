@@ -1,0 +1,30 @@
+{:id "nlp-ml"
+ :title "NLP & ML"
+ :contents
+ [{:subtitle "概要"
+   :description "活動場所や活動内容"
+   :content
+   [:div
+    [:div
+     [:p "主に深層学習や機械学習の研究については Qiita に公開する形を取っています。"]
+     [:p "Qiita では主に対話システムについての話をしていますが,中には友人の研究を見る都合上画像分野の話もあります。"]
+     [:p "記事を書く上で注意していることは「出来るだけ簡単に紹介する」ことです。"]
+     [:p "計算資源の都合上,モデルの公開などは出来ていませんが,コードは公開しており,特に TFGENZOO などでは「詳細な説明・十分なテスト」を念頭にコード提供を行なっています。"]]
+    [:div.content>ul
+     [:li [:a {:href "https://qiita.com/MeguruMokke"} "Qiita リンク"]]
+     [:li [:a {:href "https://github.com/MokkeMeguru/TFGENZOO"} "TFGENZOO リンク"]]]
+    ]}
+  {:subtitle "最近読んでいる内容"
+   :description "興味のある分野の紹介"
+   :content
+   [:div
+    [:div
+     [:p "VF Project で活動している都合上,Amazon Alexa Prize については特に興味を持っています。"]
+     [:p "また GPT-2 のような文生成モデルについても関心がありますが,大規模計算を行うことから実験は行えていません。"]
+     [:p "修士論文を書かなければならない都合上,自然言語で攻めることが難しいため (*)画像分野の研究も読んでいます。"]
+     [:p "(*) 近年は大規模データと巨大な計算機で戦わないといけない,対話分野や文生成分野は評価が難しいなどの理由"]]
+    [:div.content>ul
+     [:li [:a {:href "https://qiita.com/MeguruMokke/items/561e778ccd69e5160c74"} "Amazon Alexa Prize 2018 の論文解説"]]
+     [:li [:a {:href "https://qiita.com/MeguruMokke/items/6e5d7997f4df7f08030d"} "対話システム全般についての紹介"]]
+     [:li [:a {:href "https://qiita.com/MeguruMokke/items/1201b5fa05ad6ec5efb9"} "BERTが取り組んでいるタスクGLUEの紹介"]]
+     [:li [:a {:href "https://qiita.com/MeguruMokke/items/da318e6b0aebc5904fcf"} "自動着彩手法 style2paint の紹介"]]]]}]}
