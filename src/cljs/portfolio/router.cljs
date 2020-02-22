@@ -7,7 +7,7 @@
 
 
 (def routes
-  ["/"
+  ["/portfolio"
    (conj
     (into [["" :introduction]]
           (vec (map (fn [v] [v (keyword v)]) (vals (:nav-contents db/default-db)))))
