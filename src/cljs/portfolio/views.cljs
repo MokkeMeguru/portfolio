@@ -51,7 +51,7 @@
         nav-contents @(re-frame/subscribe [::subs/nav-contents])]
    [:nav#nav_box.navbar.box
      [:div.navbar-brand
-      [:a.navbar-item {:href "https://mokkemeguru.github.io/portfolio/resources/public/index.html"}
+      [:a.navbar-item {:href "https://mokkemeguru.github.io/portfolio/"}
        [:img#logo {:src "https://avatars0.githubusercontent.com/u/30849444?s=400&u=75bde9345fbaf950cceec1d8fc4dc68eff83507a&v=4"}]]
       [:a.navbar-burger.burger
        {:aria-label "menu"
