@@ -35,8 +35,10 @@
     {:name ::others}]])
 
 (defn on-navigate [new-match]
-  (when new-match
-    (re-frame/dispatch-sync [::events/navigated new-match])))
+  (if new-match
+    (do(re-frame/dispatch [::events/navigated new-match])
+       (re-frame/dispatch-sync [::events/load-content (->  new-match .-data :name name)]))
+    (re-frame/dispatch-sync [::events/load-content "introduction"])))
 
 (def router
   (rf/router
