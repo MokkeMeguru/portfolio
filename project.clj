@@ -6,10 +6,12 @@
                                org.clojure/google-closure-library-third-party]]
                  [thheller/shadow-cljs "2.8.83"]
                  [day8.re-frame/http-fx "v0.2.0"]
+                 [bidi "2.1.6"]
                  [bulma-cljs "0.1.4"]
                  [reagent "0.8.1"]
                  [re-frame "0.10.9"]
                  [garden "1.3.9"]
+                 [kibu/pushy "0.3.8"]
                  [ns-tracker "0.4.0"]]
 
   :plugins [[lein-garden "0.3.0"]
