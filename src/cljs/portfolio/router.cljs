@@ -39,18 +39,15 @@
   (cond
     new-match
     (do
-      (print "Hellow")
       (re-frame/dispatch [::events/navigated new-match])
       (re-frame/dispatch [::events/load-content (->  new-match .-data :name name)]))
     (hod/get-item hod/session-storage "redirection")
     (do
-      (print "hello")
-      (print (hod/get-item hod/session-storage "redirection"))
       (re-frame/dispatch [::events/load-content (hod/get-item hod/session-storage "redirection")])
-      (hod/clear! hod/session-storage))
+      ;;(hod/clear! hod/session-storage)
+      )
     :default
     (do
-      (print "hoge")
       (re-frame/dispatch [::events/load-content "introduction"]))))
 
 
