@@ -19,7 +19,7 @@
 (re-frame/reg-event-fx
  ::load-content
  (fn [{:keys [db]} [_ id]]
-   (let [_id (if (= "home" id) "introduction" id)]
+   (let [_id (if (contains? (-> db :nav-contents vals set) id) id "introduction")]
      {:db (assoc db :loaded true)
       :http-xhrio {:method :get
                    :uri (str "./contents/" _id ".edn")
