@@ -19,14 +19,15 @@
 (re-frame/reg-event-fx
  ::load-content
  (fn [{:keys [db]} [_ id]]
-   (.log js/console (:content-loc db))
-   {:db (assoc db :loaded true)
-    :http-xhrio {:method :get
-                 :uri (str "./contents/" (:content-loc db) ".edn")
-                 :timeout 2000
-                 :response-format (ajaxedn/edn-response-format)
-                 :on-success [::resource-get-success]
-                 :on-failure [::resource-get-failed]}}))
+   (let [_id (if (= "home"(:content-loc db)) "introduction" (:content-loc db))]
+     (.log js/console (:content-loc db))
+     {:db (assoc db :loaded true)
+      :http-xhrio {:method :get
+                   :uri (str "./contents/" id ".edn")
+                   :timeout 2000
+                   :response-format (ajaxedn/edn-response-format)
+                   :on-success [::resource-get-success]
+                   :on-failure [::resource-get-failed]}})))
 
 (re-frame/reg-event-fx
  ::navigate
