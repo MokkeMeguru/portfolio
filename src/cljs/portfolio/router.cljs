@@ -4,7 +4,8 @@
             [reitit.frontend :as rf]
             [portfolio.events :as events]
             [reitit.frontend.easy :as rfe]
-            [reitit.coercion.spec :as rcs]))
+            [reitit.coercion.spec :as rcs]
+            [hodgepodge.core :as hod]))
 
 (defn href
   "Return relative url for given route. Url can be used in HTML links."
@@ -14,7 +15,7 @@
    (href k params nil))
   ([k params query]
    (rfe/href k params query)))
-
+;; (= ::home (keyword :portfolio.router "home"))
 (def routes
   ["/"
    [""
@@ -35,10 +36,23 @@
     {:name ::others}]])
 
 (defn on-navigate [new-match]
-  (if new-match
-    (do(re-frame/dispatch [::events/navigated new-match])
-       (re-frame/dispatch-sync [::events/load-content (->  new-match .-data :name name)]))
-    (re-frame/dispatch-sync [::events/load-content "introduction"])))
+  (cond
+    new-match
+    (do
+      (print "Hellow")
+      (re-frame/dispatch [::events/navigated new-match])
+      (re-frame/dispatch [::events/load-content (->  new-match .-data :name name)]))
+    (hod/get-item hod/session-storage "redirection")
+    (do
+      (print "hello")
+      (print (hod/get-item hod/session-storage "redirection"))
+      (re-frame/dispatch [::events/load-content (hod/get-item hod/session-storage "redirection")])
+      (hod/clear! hod/session-storage))
+    :default
+    (do
+      (print "hoge")
+      (re-frame/dispatch [::events/load-content "introduction"]))))
+
 
 (def router
   (rf/router
