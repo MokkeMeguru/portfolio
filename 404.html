@@ -1,6 +1,7 @@
 <script>
  let href = location.href;
  let slug = href.match(/[^/]*(?=(\/)?$)/)[0];
- sessionStorage.SetItem("redirection", slug)
+ sessionStorage.redirect =  slug
+ alert(slug);
 </script>
-<meta http-equiv="refresh" content="0;URL='./'"></meta>
+<meta http-equiv="refresh" content="5;URL='./'"></meta>
