@@ -56,4 +56,4 @@ jobs:
       env:	
         DEPLOY_ENV: production	
         DEPLOY_REF: master	
-        GITHUB_TOKEN:  ${{ secrets.gh-pages }}
+        GITHUB_TOKEN:  ${{ secrets.deploy-to-prod }}
