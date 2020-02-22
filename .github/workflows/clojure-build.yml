@@ -12,7 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+      with:
+        persist-credentials: false
     - name: cache_node_js
       uses:  actions/cache@v1
       env:
