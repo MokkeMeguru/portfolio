@@ -5,6 +5,7 @@
    [day8.re-frame.tracing :refer-macros [fn-traced defn-traced]]
    [day8.re-frame.http-fx]
    [reitit.frontend.controllers :as rfc]
+   [reitit.frontend.easy :as rfe]
    [ajax.core :as ajax]
    [ajax.edn :as ajaxedn]
    ))
@@ -15,7 +16,7 @@
    db/default-db))
 
 (re-frame/reg-event-fx
- ::navigage
+ ::navigate
  (fn [db [_ & route]]
    {::navigate! route}))
 
@@ -27,6 +28,11 @@
      (assoc db :current-route (assoc new-match :controllers controllers)))))
 
 
+(re-frame/reg-fx
+ ::navigate!
+ (fn [route]
+   (print route)
+   (apply rfe/push-state route)))
 
 (re-frame/reg-event-fx
  ::load-content
@@ -38,11 +44,6 @@
                  :response-format (ajaxedn/edn-response-format)
                  :on-success [::resource-get-success]
                  :on-failure [::resource-get-failed]}}))
-
-(re-frame/reg-event-fx
- ::set-page
- (fn [{:keys [db]} [_ match]]
-   {:db (assoc-in db [:state :page] match)}))
 
 (re-frame/reg-event-db
  ::resource-get-success
