@@ -57,4 +57,4 @@ jobs:
         git config --local user.name "MokkeMeguru"
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git commit -am "Build from production"
-        git push
+        git push origin master
