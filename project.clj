@@ -6,6 +6,7 @@
                                org.clojure/google-closure-library-third-party]]
                  [thheller/shadow-cljs "2.8.83"]
                  [day8.re-frame/http-fx "v0.2.0"]
+                 [metosin/reitit "0.4.2"]
                  [bulma-cljs "0.1.4"]
                  [reagent "0.8.1"]
                  [re-frame "0.10.9"]
