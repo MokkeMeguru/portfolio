@@ -19,4 +19,4 @@ jobs:
         # deploy_key: ${{ secrets.gh-pages }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
         # personal_token: ${{ secrets.PAT_TO_GITHUB_ACTION }}
-        publish_dir: ./public
+        publish_dir: ./resources/public
