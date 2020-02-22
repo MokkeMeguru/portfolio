@@ -3,7 +3,7 @@
     "ignore": [
         "firebase.json",
         "**/.*",
-        "js/compiled/cljs-runtime"
+        "./js/compiled/cljs-runtime/*"
     ],
     "rewrites": [
         {"source": "**",
