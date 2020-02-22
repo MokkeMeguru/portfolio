@@ -60,6 +60,6 @@
   (rfe/start!
    router
    on-navigate
-   {:use-fragment false}))
+   {:use-fragment true}))
 
 
