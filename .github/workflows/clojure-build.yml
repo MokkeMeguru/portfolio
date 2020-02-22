@@ -61,6 +61,6 @@ jobs:
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.deploy-to-prod }}
+        github_token: ${{ secrets.PAT_TO_GITHUB_ACTION }}
         force: true
         branch: master
