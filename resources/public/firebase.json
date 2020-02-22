@@ -1,0 +1,13 @@
+{"hosting" : {
+    "public" : ".",
+    "ignore": [
+        "firebase.json",
+        "**/.*",
+        "js/compiled/cljs-runtime"
+    ],
+    "rewrites": [
+        {"source": "**",
+         "destination": "index.html"}
+    ]
+}
+}
