@@ -53,9 +53,13 @@
         [:th [:p "卒業研究として用いた技術について紹介"]
          [:a {:href "https://drive.google.com/file/d/1H5-Pbd1VOCriSPw1EraQ22nEKVg5Zxrr/view?usp=sharing"} "drive リンク"]]]
        [:tr
-        [:th "2018年4月"]
+        [:th "2019年4月"]
         [:th [:p "修士課程として自然言語処理分野,深層学習分野の研究に着手"]]]
        [:tr
-        [:th "2018年7月"]
-        [:th [:p "サイボウズ・ラボユースとして自然言語処理分野の研究に着手"]]]]]]}
+        [:th "2019年7月"]
+        [:th [:p "サイボウズ・ラボユースとして自然言語処理分野の研究に着手"]]]
+       [:tr
+        [:th "2020年3月"]
+        [:th [:p "DEIM2020(第12回データ工学と情報マネジメントに関するフォーラム) において、文の個性付けに関する研究を発表"]
+         [:a {:href "https://drive.google.com/file/d/1eTV3dvJUK9z3AmWY5Iq4LpWB5NFxqNif/view?usp=sharing" "drive リンク"}]]]]]]}
   ]}
