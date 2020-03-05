@@ -61,5 +61,5 @@
        [:tr
         [:th "2020年3月"]
         [:th [:p "DEIM2020(第12回データ工学と情報マネジメントに関するフォーラム) において、文の個性付けに関する研究を発表"]
-         [:a {:href "https://drive.google.com/file/d/1eTV3dvJUK9z3AmWY5Iq4LpWB5NFxqNif/view?usp=sharing" "drive リンク"}]]]]]]}
+         [:a {:href "https://drive.google.com/file/d/1eTV3dvJUK9z3AmWY5Iq4LpWB5NFxqNif/view?usp=sharing"} "drive リンク"]]]]]]}
   ]}
