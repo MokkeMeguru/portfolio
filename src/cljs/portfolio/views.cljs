@@ -37,7 +37,7 @@
    [:span.icon
     [:i.fab.fa-twitter]]
    [:span
-    "Tweet" ]])
+    "@MeguruMokke" ]])
 
 (defn nav-panel-end []
   [:div.navbar-end
