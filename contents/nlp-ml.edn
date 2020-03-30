@@ -9,11 +9,18 @@
      [:p "主に深層学習や機械学習の研究については Qiita に公開する形を取っています。"]
      [:p "Qiita では主に対話システムについての話をしていますが,中には友人の研究を見る都合上画像分野の話もあります。"]
      [:p "記事を書く上で注意していることは「出来るだけ簡単に紹介する」ことです。"]
-     [:p "計算資源の都合上,モデルの公開などは出来ていませんが,コードは公開しており,特に TFGENZOO などでは「詳細な説明・十分なテスト」を念頭にコード提供を行なっています。"]]
+     [:p "計算資源の都合上,モデルの公開などは出来ていませんが,コードは公開しており,特に Flow-base モデルに関するライブラリであるTFGENZOO などでは「詳細な説明・十分なテスト」を念頭にコード提供を行なっています。"]]
     [:div.content>ul
      [:li [:a {:href "https://qiita.com/MeguruMokke"} "Qiita リンク"]]
      [:li [:a {:href "https://github.com/MokkeMeguru/TFGENZOO"} "TFGENZOO リンク"]]]
     ]}
+  {:subtitle "大学における活動"
+   :description "大学生向けの機械学習＆Tensorflow 1.12.0 チュートリアルを作成"
+   :content
+   [:div
+    [:div
+     [:p "2020/02 、内部学生向けの機械学習&Tensorflow 1.12.0に関するチュートリアルを作成、指導を行いました。"]
+     [:a {:href "https://github.com/MokkeMeguru/tensorflow_tutorial"} "授業レポジトリリンク"]]]}
   {:subtitle "最近読んでいる内容"
    :description "興味のある分野の紹介"
    :content
