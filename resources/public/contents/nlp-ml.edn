@@ -20,7 +20,7 @@
    [:div
     [:div
      [:p "2020/02 、内部学生向けの機械学習&Tensorflow 1.12.0に関するチュートリアルを作成、指導を行いました。"]
-     [:a {:href "https://github.com/MokkeMeguru/tensorflow_tutorial"} "授業レポジトリリンク"]]}
+     [:a {:href "https://github.com/MokkeMeguru/tensorflow_tutorial"} "授業レポジトリリンク"]]]}
   {:subtitle "最近読んでいる内容"
    :description "興味のある分野の紹介"
    :content
